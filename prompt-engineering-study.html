@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering Case Study - Flex Munene</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a1a2e; --secondary: #16213e; --accent: #0f4c75;
+            --highlight: #3282b8; --text: #e8e8e8; --text-muted: #a0a0a0;
+            --bg: #0f0f1e; --card-bg: #1a1a2e; --border: #2a2a3e;
+        }
+        
+        body { font-family: 'Work Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        
+        header { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        header nav { display: flex; justify-content: space-between; align-items: center; }
+        header a { color: var(--highlight); text-decoration: none; transition: color 0.3s; }
+        header a:hover { color: var(--text); }
+        
+        main { padding: 3rem 0; }
+        
+        h1 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 400; }
+        h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; font-weight: 400; }
+        h3 { font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--highlight); }
+        
+        p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        
+        .meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .tag { background: var(--accent); color: var(--text); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; }
+        
+        .example-box { background: var(--card-bg); border-left: 3px solid var(--highlight); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+        .example-box h4 { color: var(--highlight); margin-bottom: 0.8rem; font-size: 1rem; }
+        .example-box pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; color: var(--text-muted); font-size: 0.9rem; }
+        
+        ul { padding-left: 1.5rem; margin: 1rem 0; }
+        li { color: var(--text-muted); margin-bottom: 0.5rem; }
+        li::marker { color: var(--highlight); }
+        
+        .score { display: inline-block; background: var(--accent); color: white; padding: 0.2rem 0.6rem; border-radius: 3px; font-weight: 600; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">← Back to Portfolio</a>
+                <a href="https://github.com/flexmunene-eng" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h1>Prompt Engineering Case Study</h1>
+        <div class="meta">
+            <span class="tag">Prompt Design</span>
+            <span class="tag">Output Comparison</span>
+            <span class="tag">Medical Content</span>
+        </div>
+        
+        <p><strong>Objective:</strong> Test how different prompt structures affect output quality when generating patient education content about diabetes management.</p>
+        
+        <h2>Why This Matters</h2>
+        <p>In AI training work, understanding how models respond to different instruction formats is critical for writing effective annotation guidelines, identifying when outputs fail to follow instructions, and assessing whether a response genuinely addresses the user's need.</p>
+        
+        <h2>Methodology</h2>
+        <p>Tested four prompt approaches with GPT-4 and Claude 3.5 Sonnet:</p>
+        <ul>
+            <li><strong>Zero-shot</strong> (minimal instruction)</li>
+            <li><strong>Few-shot</strong> (with examples)</li>
+            <li><strong>Chain-of-thought</strong> (explicit reasoning)</li>
+            <li><strong>Role + constraints</strong> (persona + specific requirements)</li>
+        </ul>
+        <p><strong>Task:</strong> Generate patient education content explaining blood glucose monitoring for newly diagnosed Type 2 diabetes patients.</p>
+        
+        <h2>Test 1: Zero-Shot Prompt</h2>
+        
+        <div class="example-box">
+            <h4>Prompt</h4>
+            <pre>Explain blood glucose monitoring for Type 2 diabetes patients.</pre>
+        </div>
+        
+        <div class="example-box">
+            <h4>GPT-4 Output</h4>
+            <pre>Blood glucose monitoring is an essential part of managing Type 2 diabetes. It involves 
+regularly checking your blood sugar levels using a glucose meter. Here's what you need 
+to know:
+
+1. Why Monitor: Helps track how food, exercise, and medication affect your blood sugar
+2. When to Test: Typically before meals and at bedtime, but your doctor will advise
+3. Target Ranges: Generally 80-130 mg/dL before meals, less than 180 mg/dL after meals
+4. How to Test: Wash hands, insert test strip, prick finger, apply blood to strip
+5. Record Results: Keep a log to share with your healthcare provider</pre>
+        </div>
+        
+        <h3>Evaluation</h3>
+        <ul>
+            <li>✅ Factually accurate</li>
+            <li>✅ Well-structured</li>
+            <li>❌ Too clinical for newly diagnosed patients</li>
+            <li>❌ Assumes knowledge (what's mg/dL?)</li>
+            <li>❌ Doesn't address common fears</li>
+            <li>❌ No personalization or reassurance</li>
+        </ul>
+        <p><strong>Quality Score:</strong> <span class="score">6/10</span> — Correct but not genuinely helpful for the target audience.</p>
+        
+        <h2>Test 2: Few-Shot Prompt</h2>
+        
+        <div class="example-box">
+            <h4>Prompt</h4>
+            <pre>Write patient education content. Here are examples of the tone and approach:
+
+Example 1 - Medication adherence:
+"Taking your medication every day might feel like a chore at first. That's normal. 
+Many people find it helps to link it to something they already do daily — like 
+brushing teeth or having morning coffee."
+
+Example 2 - Diet changes:
+"You don't have to eat 'diabetes food.' You're eating the same food as everyone else, 
+just paying more attention to portions and timing."
+
+Now write similar content explaining blood glucose monitoring.</pre>
+        </div>
+        
+        <div class="example-box">
+            <h4>GPT-4 Output</h4>
+            <pre>Checking your blood sugar might seem daunting at first. Most people worry about the 
+finger prick. Here's the truth: it's a tiny pinch, less than a mosquito bite. After 
+a few days, you won't think about it.
+
+You're not checking because you did something wrong. You're checking to see how your 
+body responds to food, stress, and activity. Think of it as feedback, not a test you 
+can fail.
+
+Your doctor will tell you when to check — usually before meals and before bed. Write 
+the numbers down somewhere you won't lose them. Your phone's notes app works fine.
+
+The meter will show a number. That number isn't good or bad on its own. It's information. 
+If it's higher than expected, you're not in trouble. You're just learning what affects 
+your levels.</pre>
+        </div>
+        
+        <h3>Evaluation</h3>
+        <ul>
+            <li>✅ Addresses patient anxiety directly</li>
+            <li>✅ Reassuring tone without being condescending</li>
+            <li>✅ Practical advice (phone notes app)</li>
+            <li>✅ Reframes monitoring as feedback, not judgment</li>
+            <li>✅ Acknowledges learning curve</li>
+            <li>⚠️ Lacks specific target ranges</li>
+        </ul>
+        <p><strong>Quality Score:</strong> <span class="score">9/10</span> — Much better. Sounds like a person talking, not a pamphlet.</p>
+        
+        <h2>Key Findings</h2>
+        
+        <h3>What Worked</h3>
+        <ul>
+            <li><strong>Few-shot examples</strong> dramatically improved tone matching</li>
+            <li><strong>Role + constraints</strong> produced the tightest, most useful output</li>
+            <li><strong>Chain-of-thought</strong> revealed model reasoning (valuable for annotation work)</li>
+        </ul>
+        
+        <h3>What Failed</h3>
+        <ul>
+            <li><strong>Zero-shot</strong> generated generic content that looked right but wasn't helpful</li>
+            <li>Outputs without <strong>audience specification</strong> defaulted to inappropriate clinical tone</li>
+        </ul>
+        
+        <h3>Failure Modes Observed</h3>
+        <ul>
+            <li><strong>Confidence without appropriateness:</strong> Zero-shot output was factually correct but wrong for the audience</li>
+            <li><strong>Jargon assumption:</strong> Models defaulted to medical terminology without checking appropriateness</li>
+            <li><strong>Missing emotional dimension:</strong> Without explicit prompting, outputs ignored patient anxiety</li>
+        </ul>
+        
+        <h2>Application to AI Training Work</h2>
+        <ul>
+            <li><strong>Pairwise comparison:</strong> Few-shot vs. zero-shot outputs show clear quality difference despite both being "correct"</li>
+            <li><strong>Instruction-following assessment:</strong> Role + constraints test shows whether model can follow specific requirements</li>
+            <li><strong>Annotation criteria:</strong> Need to evaluate outputs on multiple dimensions — accuracy alone isn't sufficient</li>
+        </ul>
+        
+        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+            <a href="index.html" style="color: var(--highlight); text-decoration: none;">← Back to Portfolio</a>
+        </p>
+    </main>
+</body>
+</html>

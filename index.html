@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Munene - AI Training Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text: #e8e8e8;
+            --text-muted: #a0a0a0;
+            --bg: #0f0f1e;
+            --card-bg: #1a1a2e;
+            --border: #2a2a3e;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, var(--primary) 0%, var(--bg) 100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .header-text h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .header-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .header-links a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .header-links a:hover {
+            color: var(--text);
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 4rem 0;
+            max-width: 900px;
+        }
+
+        .intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .intro strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Skills Grid */
+        .skills {
+            padding: 3rem 0;
+            background: var(--secondary);
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .skills h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--highlight);
+        }
+
+        .skill-card h4 {
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .skill-card li {
+            padding: 0.3rem 0;
+            color: var(--text-muted);
+        }
+
+        .skill-card li:before {
+            content: "→ ";
+            color: var(--highlight);
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 0;
+        }
+
+        .projects > h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .project {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(50, 130, 184, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .project h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--accent);
+            color: var(--text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .project-details {
+            margin-top: 1.5rem;
+        }
+
+        .project-details h4 {
+            color: var(--highlight);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .project-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-details li {
+            padding: 0.4rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-details li:before {
+            content: "✓ ";
+            color: var(--highlight);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--highlight);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--highlight);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .intro h2 {
+                font-size: 1.5rem;
+            }
+
+            .projects > h2 {
+                font-size: 2rem;
+            }
+
+            .project h3 {
+                font-size: 1.4rem;
+            }
+
+            .project {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Flex Munene</h1>
+                    <p>AI Training & Evaluation Portfolio</p>
+                </div>
+                <div class="header-links">
+                    <a href="mailto:flexmunene@gmail.com">Email</a>
+                    <a href="https://linkedin.com/in/flex-munene-6569b63a0" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/flexmunene-eng" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>About This Portfolio</h2>
+            <p>
+                This portfolio showcases my practical work in <strong>AI content evaluation, prompt engineering, 
+                and data annotation</strong> — skills I've developed through copywriting work and active use of 
+                language models (Claude, ChatGPT, Jasper, Perplexity).
+            </p>
+            <p>
+                My background combines <strong>native Swahili fluency</strong> with advanced English proficiency, 
+                professional writing evaluation from copywriting work, scientific training in Medical Biochemistry, 
+                and hands-on AI experience evaluating model outputs for clients.
+            </p>
+            <p>
+                These skills translate directly to AI trainer and data annotation roles: I already evaluate 
+                AI-generated content for accuracy, naturalness, instruction-following, and cultural appropriateness 
+                as part of my daily work.
+            </p>
+        </section>
+
+        <section class="skills container">
+            <h3>Core Competencies</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>AI Content Evaluation</h4>
+                    <ul>
+                        <li>Pairwise response comparison</li>
+                        <li>Multi-dimensional quality assessment</li>
+                        <li>Identifying AI-generated patterns</li>
+                        <li>Failure mode documentation</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4>Language Expertise</h4>
+                    <ul>
+                        <li>Swahili: Native speaker</li>
+                        <li>English: Advanced (C1/C2)</li>
+                        <li>Translation accuracy assessment</li>
+                        <li>Cultural appropriateness review</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4>Data Annotation</h4>
+                    <ul>
+                        <li>Content annotation and labeling</li>
+                        <li>Writing annotation guidelines</li>
+                        <li>Quality assurance and error detection</li>
+                        <li>Systematic evaluation frameworks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Portfolio Projects</h2>
+
+            <div class="project">
+                <div class="project-header">
+                    <div>
+                        <h3>Prompt Engineering Case Study</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Prompt Design</span>
+                            <span class="project-tag">Output Comparison</span>
+                            <span class="project-tag">Failure Analysis</span>
+                        </div>
+                    </div>
+                    <div class="project-number">01</div>
+                </div>
+                <p>
+                    Systematic testing of how prompt structure affects output quality for medical content generation. 
+                    Tested zero-shot, few-shot, chain-of-thought, and role-based prompts with GPT-4 and Claude 3.5 Sonnet.
+                </p>
+                <div class="project-details">
+                    <h4>Key Findings</h4>
+                    <ul>
+                        <li>Few-shot examples dramatically improved tone matching</li>
+                        <li>Role + constraints produced the tightest, most useful output</li>
+                        <li>Chain-of-thought revealed model reasoning process</li>
+                        <li>Zero-shot generated generic content inappropriate for audience</li>
+                    </ul>
+                </div>
+                <a href="prompt-engineering-study.html" class="project-link">View Full Case Study →</a>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div>
+                        <h3>AI Output Evaluation Framework</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Quality Assessment</span>
+                            <span class="project-tag">RLHF Annotation</span>
+                            <span class="project-tag">Pairwise Comparison</span>
+                        </div>
+                    </div>
+                    <div class="project-number">02</div>
+                </div>
+                <p>
+                    A 7-dimension rubric for assessing language model responses. Used for quality-checking 
+                    AI-generated content for copywriting clients and annotation work.
+                </p>
+                <div class="project-details">
+                    <h4>Evaluation Dimensions</h4>
+                    <ul>
+                        <li>Factual accuracy and verifiability</li>
+                        <li>Instruction-following and task compliance</li>
+                        <li>Coherence and logical structure</li>
+                        <li>Naturalness and tone appropriateness</li>
+                        <li>Audience appropriateness</li>
+                        <li>Completeness and depth</li>
+                        <li>Safety and bias detection</li>
+                    </ul>
+                </div>
+                <a href="evaluation-framework.html" class="project-link">View Framework →</a>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div>
+                        <h3>Swahili-English AI Evaluation</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Native Language Expertise</span>
+                            <span class="project-tag">Translation QA</span>
+                            <span class="project-tag">Cultural Review</span>
+                        </div>
+                    </div>
+                    <div class="project-number">03</div>
+                </div>
+                <p>
+                    Quality assessment of AI-generated Swahili content, identifying common errors in translation, 
+                    cultural appropriateness, and naturalness for the Kenyan market.
+                </p>
+                <div class="project-details">
+                    <h4>Common AI Errors Identified</h4>
+                    <ul>
+                        <li>Direct English idiom translations that sound unnatural</li>
+                        <li>Overly formal register inappropriate for context</li>
+                        <li>Wrong word choices for Kenyan vs. Tanzanian usage</li>
+                        <li>Cultural appropriateness issues for Kenyan audience</li>
+                        <li>Critical factual errors in medical/health content</li>
+                    </ul>
+                </div>
+                <a href="swahili-evaluation.html" class="project-link">View Swahili Examples →</a>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div>
+                        <h3>Annotation Guidelines Template</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">Guideline Development</span>
+                            <span class="project-tag">Data Labeling</span>
+                            <span class="project-tag">Edge Case Handling</span>
+                        </div>
+                    </div>
+                    <div class="project-number">04</div>
+                </div>
+                <p>
+                    Sample instructions for AI training annotation projects. Demonstrates ability to write clear, 
+                    comprehensive guidelines for data labeling teams.
+                </p>
+                <div class="project-details">
+                    <h4>Guidelines Include</h4>
+                    <ul>
+                        <li>Multi-dimensional rating scales with concrete examples</li>
+                        <li>Edge case handling and tricky situation protocols</li>
+                        <li>Quality standards and spot-check criteria</li>
+                        <li>Issue flag taxonomy for common problems</li>
+                        <li>Annotator FAQs and troubleshooting</li>
+                    </ul>
+                </div>
+                <a href="annotation-guidelines.html" class="project-link">View Guidelines →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2024 Flex Munene • AI Training & Evaluation Portfolio</p>
+                <div class="footer-links">
+                    <a href="mailto:flexmunene@gmail.com">Contact</a>
+                    <a href="https://github.com/flexmunene-eng" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/flex-munene-6569b63a0" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

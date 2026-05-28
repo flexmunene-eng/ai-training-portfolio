@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotation Guidelines - Flex Munene</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e; --secondary: #16213e; --accent: #0f4c75;
+            --highlight: #3282b8; --text: #e8e8e8; --text-muted: #a0a0a0;
+            --bg: #0f0f1e; --card-bg: #1a1a2e; --border: #2a2a3e;
+        }
+        body { font-family: 'Work Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        header { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        header a { color: var(--highlight); text-decoration: none; }
+        main { padding: 3rem 0; }
+        h1 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 400; }
+        h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; font-weight: 400; }
+        h3 { font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--highlight); }
+        p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        ul { padding-left: 1.5rem; margin: 1rem 0; }
+        li { color: var(--text-muted); margin-bottom: 0.5rem; }
+        .guideline-box { background: var(--card-bg); border-left: 3px solid var(--highlight); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+        .guideline-box h4 { color: var(--highlight); margin-bottom: 0.8rem; }
+        .scale { background: var(--secondary); padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+        .scale-item { padding: 0.5rem 0; }
+        .scale-item strong { color: var(--highlight); }
+        .checklist { background: var(--secondary); padding: 1.5rem; border-radius: 4px; margin: 1.5rem 0; }
+        .checklist label { display: block; margin: 0.5rem 0; cursor: pointer; user-select: none; }
+        .checklist input { margin-right: 0.5rem; }
+        code { background: var(--bg); padding: 0.2rem 0.4rem; border-radius: 3px; color: var(--text); font-family: monospace; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">← Back to Portfolio</a>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h1>Annotation Guidelines Template</h1>
+        <p><strong>Sample instructions for AI training annotation projects.</strong></p>
+        
+        <h2>Purpose</h2>
+        <p>These guidelines demonstrate how to write clear, comprehensive instructions for human annotators working on AI training data. Shows ability to communicate evaluation criteria, handle edge cases, and establish quality standards.</p>
+        
+        <h2>Key Components of Good Guidelines</h2>
+        
+        <div class="guideline-box">
+            <h4>1. Clear Task Definition</h4>
+            <p>What exactly is the annotator doing?</p>
+            <ul>
+                <li>Read the user's message</li>
+                <li>Review the AI's response</li>
+                <li>Rate on 5 dimensions</li>
+                <li>Identify specific issues</li>
+                <li>Provide brief justification</li>
+            </ul>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>2. Rating Scales with Examples</h4>
+            <p>Each dimension needs concrete examples, not just definitions.</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5 - Very helpful:</strong> Comprehensively addresses question, provides specific information, would fully resolve user's issue</div>
+                <div class="scale-item"><strong>4 - Helpful:</strong> Directly addresses question, provides most needed information</div>
+                <div class="scale-item"><strong>3 - Somewhat helpful:</strong> Answers incompletely, useful information but lacks important context</div>
+                <div class="scale-item"><strong>2 - Minimally helpful:</strong> Tangential to question, generic information</div>
+                <div class="scale-item"><strong>1 - Not helpful:</strong> Completely misunderstands or refuses inappropriately</div>
+            </div>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>3. Edge Cases & Tricky Situations</h4>
+            <ul>
+                <li>What if the user's request is unclear?</li>
+                <li>What if the user asked for something inappropriate?</li>
+                <li>What if you disagree with the AI's perspective?</li>
+                <li>What if you don't have enough context?</li>
+            </ul>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>4. Quality Standards</h4>
+            <ul>
+                <li>Every field must be filled out</li>
+                <li>Ratings must be based on guidelines, not personal preference</li>
+                <li>Justifications must reference specific aspects</li>
+                <li>Don't overthink edge cases</li>
+            </ul>
+        </div>
+        
+        <h2>Annotation Workflow</h2>
+        
+        <div class="guideline-box">
+            <h4>Step 1: Read the User Message</h4>
+            <ul>
+                <li>What is the user trying to accomplish?</li>
+                <li>What kind of response would actually help them?</li>
+                <li>Are there any implicit requirements?</li>
+            </ul>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Step 2: Read the AI Response</h4>
+            <ul>
+                <li>First impression: Does this help?</li>
+                <li>Read through completely before rating</li>
+            </ul>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Step 3: Rate Each Dimension</h4>
+            <ul>
+                <li>Use the full scale (don't cluster around 3-4)</li>
+                <li>Consider each dimension independently</li>
+                <li>Reference examples when uncertain</li>
+            </ul>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Step 4: Write Justification</h4>
+            <p><strong>Good justification:</strong> "Rating helpfulness as 2 because while it addresses the topic generally, it doesn't provide specific steps. User would still be stuck."</p>
+            <p><strong>Bad justification:</strong> "Not very good. Rating: 2."</p>
+        </div>
+        
+        <h2>Issue Flags Checklist</h2>
+        
+        <div class="checklist">
+            <h4>Content Issues</h4>
+            <label><input type="checkbox"> Hallucination (fabricated facts)</label>
+            <label><input type="checkbox"> Outdated information</label>
+            <label><input type="checkbox"> Stereotyping or bias</label>
+            <label><input type="checkbox"> Inappropriate tone</label>
+            <label><input type="checkbox"> Off-topic content</label>
+            
+            <h4 style="margin-top: 1rem;">Technical Issues</h4>
+            <label><input type="checkbox"> Broken formatting</label>
+            <label><input type="checkbox"> Incomplete response (cut off)</label>
+            <label><input type="checkbox"> Repetitive content</label>
+            <label><input type="checkbox"> Contradicts itself</label>
+            
+            <h4 style="margin-top: 1rem;">Other</h4>
+            <label><input type="checkbox"> Accuracy uncertain</label>
+            <label><input type="checkbox"> Context needed</label>
+        </div>
+        
+        <h2>FAQs for Annotators</h2>
+        
+        <div class="guideline-box">
+            <h4>Q: What if I strongly disagree with the AI's opinion?</h4>
+            <p>Rate based on quality and helpfulness, not agreement. If it's a topic with valid disagreement, the response can still score high if it's well-argued.</p>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Q: What if the response is very long?</h4>
+            <p>Yes, read all of it. Length doesn't automatically mean low quality, but check if it's justified or just padding.</p>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Q: Can I rate 3.5?</h4>
+            <p>No, use whole numbers only. If genuinely torn between two ratings, go with your gut and explain in the justification.</p>
+        </div>
+        
+        <div class="guideline-box">
+            <h4>Q: What if I'm not sure about accuracy?</h4>
+            <p>Mark "Accuracy uncertain" and note it. Don't mark something accurate just because it sounds right.</p>
+        </div>
+        
+        <h2>Skills This Demonstrates</h2>
+        <ul>
+            <li><strong>Communication:</strong> Writing clear, actionable instructions</li>
+            <li><strong>Systems thinking:</strong> Designing guidelines that prevent ambiguity</li>
+            <li><strong>Edge case handling:</strong> Anticipating what will confuse annotators</li>
+            <li><strong>Quality assurance:</strong> Building in quality standards and spot-checks</li>
+            <li><strong>User empathy:</strong> Understanding what annotators need to do their job well</li>
+        </ul>
+        
+        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+            <a href="index.html" style="color: var(--highlight); text-decoration: none;">← Back to Portfolio</a>
+        </p>
+    </main>
+</body>
+</html>

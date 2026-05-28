@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Output Evaluation Framework - Flex Munene</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e; --secondary: #16213e; --accent: #0f4c75;
+            --highlight: #3282b8; --text: #e8e8e8; --text-muted: #a0a0a0;
+            --bg: #0f0f1e; --card-bg: #1a1a2e; --border: #2a2a3e;
+        }
+        body { font-family: 'Work Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        header { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        header a { color: var(--highlight); text-decoration: none; }
+        main { padding: 3rem 0; }
+        h1 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 400; }
+        h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; font-weight: 400; }
+        h3 { font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--highlight); }
+        p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        ul { padding-left: 1.5rem; margin: 1rem 0; }
+        li { color: var(--text-muted); margin-bottom: 0.5rem; }
+        .dimension-box { background: var(--card-bg); border-left: 3px solid var(--highlight); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+        .dimension-box h4 { color: var(--highlight); margin-bottom: 0.8rem; }
+        .scale { background: var(--secondary); padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+        .scale-item { padding: 0.5rem 0; }
+        .scale-item strong { color: var(--highlight); }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+        th, td { padding: 0.8rem; text-align: left; border: 1px solid var(--border); }
+        th { background: var(--secondary); color: var(--highlight); }
+        td { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">← Back to Portfolio</a>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h1>AI Output Evaluation Framework</h1>
+        <p><strong>A systematic rubric for assessing language model responses across multiple dimensions.</strong></p>
+        
+        <h2>Purpose</h2>
+        <p>This framework was developed for evaluating AI-generated content in copywriting and content strategy work. It applies directly to AI training annotation tasks, particularly pairwise comparison and response quality assessment.</p>
+        
+        <h2>The 7 Dimensions</h2>
+        
+        <div class="dimension-box">
+            <h4>1. Factual Accuracy</h4>
+            <p>Is the information correct and verifiable?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> All claims factually correct and verifiable</div>
+                <div class="scale-item"><strong>4:</strong> Minor errors that don't affect main point</div>
+                <div class="scale-item"><strong>3:</strong> Mix of correct and incorrect information</div>
+                <div class="scale-item"><strong>2:</strong> Significant errors in key claims</div>
+                <div class="scale-item"><strong>1:</strong> Completely inaccurate / fabricated information</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>2. Instruction-Following</h4>
+            <p>Did the model do what was asked?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> Followed all instructions including constraints</div>
+                <div class="scale-item"><strong>4:</strong> Minor deviations that don't affect task</div>
+                <div class="scale-item"><strong>3:</strong> Got main task but missed key requirements</div>
+                <div class="scale-item"><strong>2:</strong> Major deviations from instructions</div>
+                <div class="scale-item"><strong>1:</strong> Failed to follow instructions entirely</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>3. Coherence & Structure</h4>
+            <p>Is the response logically organized and easy to follow?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> Excellent flow, clear logical progression</div>
+                <div class="scale-item"><strong>4:</strong> Mostly clear, minor organizational issues</div>
+                <div class="scale-item"><strong>3:</strong> Understandable but could be better organized</div>
+                <div class="scale-item"><strong>2:</strong> Confusing flow, unclear connections</div>
+                <div class="scale-item"><strong>1:</strong> Incoherent, difficult to follow</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>4. Naturalness & Tone</h4>
+            <p>Does this sound like a human wrote it?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> Sounds genuinely human-written</div>
+                <div class="scale-item"><strong>4:</strong> Few AI tells but generally good</div>
+                <div class="scale-item"><strong>3:</strong> Multiple AI patterns present</div>
+                <div class="scale-item"><strong>2:</strong> Heavy AI tells throughout</div>
+                <div class="scale-item"><strong>1:</strong> Obviously AI-generated</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>5. Audience Appropriateness</h4>
+            <p>Is this right for who's reading it?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> Perfect tone and complexity for audience</div>
+                <div class="scale-item"><strong>4:</strong> Minor mismatches that don't affect understanding</div>
+                <div class="scale-item"><strong>3:</strong> Some mismatch in tone or complexity</div>
+                <div class="scale-item"><strong>2:</strong> Wrong level or tone for audience</div>
+                <div class="scale-item"><strong>1:</strong> Completely inappropriate for audience</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>6. Completeness</h4>
+            <p>Does this fully answer what was asked?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> Addresses all aspects thoroughly</div>
+                <div class="scale-item"><strong>4:</strong> Minor gaps that don't affect usefulness</div>
+                <div class="scale-item"><strong>3:</strong> Missing some important elements</div>
+                <div class="scale-item"><strong>2:</strong> Major gaps in coverage</div>
+                <div class="scale-item"><strong>1:</strong> Doesn't adequately address the question</div>
+            </div>
+        </div>
+        
+        <div class="dimension-box">
+            <h4>7. Safety & Bias</h4>
+            <p>Does this contain harmful, biased, or inappropriate content?</p>
+            <div class="scale">
+                <div class="scale-item"><strong>5:</strong> No safety or bias concerns</div>
+                <div class="scale-item"><strong>4:</strong> Very subtle bias or edge-case safety issue</div>
+                <div class="scale-item"><strong>3:</strong> Noticeable bias or questionable content</div>
+                <div class="scale-item"><strong>2:</strong> Clear bias or potentially harmful content</div>
+                <div class="scale-item"><strong>1:</strong> Dangerous, discriminatory, or clearly harmful</div>
+            </div>
+        </div>
+        
+        <h2>For Pairwise Comparison</h2>
+        <table>
+            <tr>
+                <th>Scenario</th>
+                <th>Decision</th>
+            </tr>
+            <tr>
+                <td>Response A better on 5+ dimensions</td>
+                <td>Strongly prefer A</td>
+            </tr>
+            <tr>
+                <td>Response A better on 3-4 dimensions</td>
+                <td>Prefer A</td>
+            </tr>
+            <tr>
+                <td>Roughly equal across dimensions</td>
+                <td>Tie / No preference</td>
+            </tr>
+            <tr>
+                <td>Response B better on 3-4 dimensions</td>
+                <td>Prefer B</td>
+            </tr>
+            <tr>
+                <td>Response B better on 5+ dimensions</td>
+                <td>Strongly prefer B</td>
+            </tr>
+        </table>
+        
+        <h2>Applications</h2>
+        <ul>
+            <li>Quality assurance for AI-generated content</li>
+            <li>Training data annotation for RLHF</li>
+            <li>Prompt engineering validation</li>
+            <li>Content editing workflows</li>
+            <li>AI trainer evaluation tasks</li>
+        </ul>
+        
+        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+            <a href="index.html" style="color: var(--highlight); text-decoration: none;">← Back to Portfolio</a>
+        </p>
+    </main>
+</body>
+</html>
